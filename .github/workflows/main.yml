@@ -24,8 +24,11 @@ jobs:
           ls app-source
 
       - name: 'Login to GitHub Container Registry'
-        run: |
-          echo $CR_PAT | docker login ghcr.io -u denadmin --password-stdin
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
 
       - name: 'Build Lampa Image'
         run: |
