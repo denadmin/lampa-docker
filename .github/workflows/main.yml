@@ -11,6 +11,8 @@ on:
 jobs:
   docker-build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write    
 
     steps:
       # Step 1: Checkout the repository with the Dockerfile
